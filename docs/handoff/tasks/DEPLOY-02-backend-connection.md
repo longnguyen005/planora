@@ -14,3 +14,6 @@ Không sửa UI, không cấu hình AI/email hoặc gọi ghi provider.
 - Live deployment check opt-in dùng HTTP thật: PostgreSQL readiness,
   truthful capabilities, no-store và bảo vệ routes/404 JSON; không fake login.
 - Kết quả build và kiểm tra production được ghi trong log cùng task.
+- Nghiệm thu production đạt: build exit0, live check backend/website1/1,
+  login/refresh/logout revocation HTTP thật và browser workspace/account;
+  hội thoại giữ sau reload. Deployment Vercel Ready, main2f02695.
