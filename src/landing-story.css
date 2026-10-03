@@ -1,0 +1,143 @@
+/* Editorial workflow: static content first, motion only when the hook is ready. */
+.heading-mask { display: block; overflow: clip; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.heading-mask > span { display: block; }
+.story-label { font-size: 9px; letter-spacing: 0.12em; color: var(--muted); margin: 0 0 15px; }
+.how-grid { position: relative; padding-top: 20px; }
+.public-page .how-card {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 24px 23px;
+  border: 1px solid #dedfd1;
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: 0 2px 5px #2e382d04;
+}
+.public-page .how-card .serif { font-size: 34px; line-height: 1.2; }
+.public-page .how-card h3 { min-height: 2.2em; }
+.public-page .how-card .workflow-fragment { margin-top: auto; padding-top: 20px; }
+.public-page .how-card[data-stage="active"] { background: #f0f3e7; border-color: #aab99a; }
+.workflow-rail { display: none; pointer-events: none; }
+.workflow-fragment { margin-top: 20px; font-size: 11px; color: var(--green); }
+.workflow-preview { display: flex; flex-direction: column; min-height: 248px; border: 1px solid #dedfd1; border-radius: 12px; overflow: hidden; background: #fffef9; }
+.workflow-preview-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 11px 13px; border-bottom: 1px solid #e7e7db; color: var(--green); }
+.workflow-preview-bar > span:first-child { display: flex; align-items: center; gap: 7px; font-weight: 500; }
+.workflow-preview .icon { width: 14px; height: 14px; flex-shrink: 0; }
+.workflow-chat { display: flex; flex-direction: column; flex: 1; padding: 13px; }
+.workflow-chat-author { display: flex; align-items: center; gap: 7px; margin-bottom: 9px; font-size: 10px; }
+.workflow-chat-author strong { font-weight: 500; }
+.workflow-avatar { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: #e8ecdd; }
+.workflow-chat-message { padding: 12px 13px; border-radius: 0 10px 10px 10px; background: #f0f3e7; font-size: 12px; line-height: 1.8; color: var(--ink); }
+.workflow-chat-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 13px; font-size: 9px; color: var(--muted); }
+.workflow-send { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 50%; background: var(--green); color: var(--paper); }
+.workflow-preview-rows { list-style: none; margin: 0; padding: 4px 12px; }
+.workflow-preview-rows li { display: flex; gap: 9px; align-items: center; padding: 10px 0; }
+.workflow-preview-rows li + li { border-top: 1px solid #efeee4; }
+.workflow-service-mark { display: grid; place-items: center; flex-shrink: 0; width: 29px; height: 29px; border-radius: 8px; background: #f4f3ea; }
+.workflow-preview .service-logo { width: 18px; height: 18px; object-fit: contain; }
+.workflow-row-copy { flex: 1; min-width: 0; display: grid; gap: 3px; }
+.workflow-row-copy strong { font-size: 11px; font-weight: 500; line-height: 1.5; color: var(--ink); }
+.workflow-row-copy > span { font-size: 9px; line-height: 1.5; color: var(--muted); overflow-wrap: anywhere; }
+.workflow-row-arrow { color: #839176; }
+.workflow-result-check { display: grid; place-items: center; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: #e8ecdd; color: var(--green); }
+.workflow-result-check .icon { width: 12px; height: 12px; }
+.workflow-preview-foot { display: flex; align-items: center; gap: 7px; margin-top: auto; border-top: 1px solid #e7e7db; background: #faf3e7; color: #886440; padding: 10px 13px; font-size: 10px; }
+.workflow-preview-complete { background: #edf1e5; color: var(--green); }
+.roadmap-toggle { cursor: pointer; min-height: 44px; padding: 8px 14px; gap: 12px; background: transparent; }
+.roadmap-toggle:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.roadmap-sign { font-size: 17px; line-height: 1; }
+.roadmap-toggle[aria-expanded="true"] .roadmap-sign { transform: rotate(45deg); }
+.roadmap-unfold { margin-top: 23px; padding-top: 20px; border-top: 1px solid var(--line); }
+.roadmap-unfold[hidden] { display: none; }
+.roadmap-route { display: grid; grid-template-columns: minmax(180px, 0.65fr) 70px minmax(0, 1.8fr); align-items: center; gap: 24px; }
+.roadmap-phase { color: var(--green); font-size: 9px; letter-spacing: 0.09em; text-transform: uppercase; }
+.landing-roadmap .roadmap-stop p { font-size: 13px; color: var(--ink); margin-top: 6px; }
+.roadmap-connector { display: block; height: 1px; background: #9da98c; transform-origin: left; }
+.landing-roadmap .roadmap-disclaimer { font-size: 10px; margin-top: 17px; }
+.landing-bottom { position: relative; isolation: isolate; }
+.landing-bottom::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1;
+  background: linear-gradient(110deg, transparent 10%, #fffdf722 48%, transparent 80%);
+  transform: translateX(var(--paper-shift, 0px)); clip-path: inset(0 round 20px); }
+.public-page .nav-anchor { position: relative; }
+.public-page .nav-anchor::after { content: ""; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; }
+.public-page .nav-anchor:hover::after, .public-page .nav-anchor:focus-visible::after { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-landing-motion] [data-scroll-surface] { transition: opacity 650ms ease, translate 650ms var(--ease-ati); }
+  [data-landing-motion] [data-scroll-surface]:not([data-revealed]):not(:focus-within) { opacity: 0; translate: 0 14px; }
+  [data-landing-motion] [data-scroll-surface]:focus-within { transition: none; }
+  .public-page .how-card { transition: transform 280ms var(--ease-ati), box-shadow 280ms ease, border-color 250ms ease, background-color 250ms ease, opacity 650ms ease, translate 650ms var(--ease-ati); }
+  @media (min-width: 761px) {
+    [data-landing-motion] .how-card[data-revealed] { transition-delay: 0ms, 0ms, 0ms, 0ms, var(--card-reveal-delay, 0ms), var(--card-reveal-delay, 0ms); }
+    .how-card:nth-of-type(2) { --card-reveal-delay: 75ms; }
+    .how-card:nth-of-type(3) { --card-reveal-delay: 150ms; }
+  }
+  @media (hover: hover) and (pointer: fine) and (min-width: 761px) {
+    .public-page .how-card:hover { transform: translateY(-6px); border-color: #8fa181; background: #fffef9; box-shadow: 0 5px 12px #2e382d08, 0 16px 28px -16px #3c57412e; }
+    .public-page .how-card:hover .serif { color: var(--green); }
+    [data-landing-motion] .how-card[data-stage]:hover h3 { color: var(--ink); }
+    [data-landing-motion] .how-card[data-stage]:hover p { opacity: 1; }
+    [data-landing-motion] .how-card[data-stage]:hover .workflow-fragment { opacity: 1; transform: translateY(0); }
+  }
+  .public-page .btn:active:not(:disabled) { transform: scale(0.985); }
+  .public-page .nav-anchor::after { transition: transform 200ms var(--ease-ati); }
+  .roadmap-sign { transition: transform 300ms var(--ease-ati); }
+  .roadmap-toggle { transition: border-color 180ms ease, color 180ms ease; }
+  .roadmap-toggle:hover { border-color: #9da98c; color: var(--green); }
+  .roadmap-unfold:not([hidden]) { animation: ati-unfold 350ms var(--ease-ati) both; }
+  .roadmap-unfold:not([hidden]) .roadmap-connector { animation: ati-route-draw 400ms var(--ease-ati) both; }
+  .roadmap-unfold:not([hidden]) .roadmap-stop { animation: ati-fade 350ms ease 220ms both; }
+  .roadmap-unfold:not([hidden]) .roadmap-stop:last-child { animation-delay: 300ms; }
+  [data-landing-motion] .workflow-rail { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 1px; }
+  .workflow-fill { position: absolute; inset: 0; background: #8b9b7b; transform: scaleX(var(--story-progress, 0)); transform-origin: left; }
+  .workflow-token { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--green); top: 0; left: var(--token-position, 0%); transform: translate(-50%, -50%); }
+  [data-landing-motion] .how-card .serif,
+  [data-landing-motion] .how-card h3,
+  [data-landing-motion] .how-card p,
+  [data-landing-motion] .workflow-fragment { transition: color 380ms ease, opacity 380ms ease, transform 400ms var(--ease-ati); }
+  [data-landing-motion] .how-card[data-stage="waiting"] h3 { color: #626e57; }
+  [data-landing-motion] .how-card[data-stage="waiting"] p { opacity: 0.9; }
+  [data-landing-motion] .how-card[data-stage="waiting"] .workflow-fragment { opacity: 0.9; transform: translateY(6px); }
+  [data-landing-motion] .how-card[data-stage="active"] .serif { color: var(--green); }
+  [data-landing-motion] .how-card[data-stage="active"] h3 { color: var(--ink); }
+  [data-landing-motion] .how-card[data-stage="passed"] .workflow-fragment { opacity: 1; }
+  [data-landing-motion] .how-title .eyebrow { transform: translateY(calc(var(--heading-depth, 0px) * 0.4)); }
+  [data-landing-motion] .how-title > p { transform: translateY(var(--heading-depth, 0px)); }
+  [data-landing-motion] .how-title:not([data-revealed]) .heading-mask > span { opacity: 0; transform: translateY(22px); }
+  [data-landing-motion] .heading-mask > span { transition: opacity 650ms ease, transform 750ms var(--ease-ati); }
+  [data-landing-motion] .heading-mask + .heading-mask > span { transition-delay: 90ms; }
+  @media (hover: hover) and (pointer: fine) and (min-width: 761px) {
+    .landing-bottom::before { transition: transform 350ms ease-out; }
+    .public-page .magnetic-cta { transform: translate(var(--magnet-x, 0px), var(--magnet-y, 0px)); transition: transform 160ms ease-out, background 160ms ease; }
+    .public-page .magnetic-cta:hover { transform: translate(var(--magnet-x, 0px), var(--magnet-y, 0px)); box-shadow: none; }
+    .public-page .magnetic-cta:active { transform: translate(var(--magnet-x, 0px), var(--magnet-y, 0px)) scale(0.985); }
+    .public-page .magnetic-cta:hover > .icon { transform: translateX(4px); }
+  }
+  @media (max-width: 760px) {
+    [data-landing-motion] .workflow-rail { top: 43px; width: 1px; height: var(--story-length, 0px); background: var(--line); }
+    [data-landing-motion] .workflow-fill { transform: scaleY(var(--story-progress, 0)); transform-origin: top; }
+    [data-landing-motion] .workflow-token { left: 0; top: var(--token-position, 0%); }
+  }
+}
+@keyframes ati-route-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ati-unfold { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ati-route-draw-vertical { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (max-width: 760px) {
+  .workflow-fragment { min-height: 0; margin-top: 14px; }
+  .how-grid { gap: 20px; padding-top: 0; padding-left: 18px; }
+  .public-page .how-card { padding: 22px 19px 20px; border-radius: 16px; }
+  .public-page .how-card h3 { min-height: 0; }
+  .public-page .how-card .workflow-fragment { padding-top: 16px; }
+  .landing-roadmap .section-heading { align-items: flex-start; }
+  .landing-roadmap .section-heading h2 { font-size: 25px; }
+  .roadmap-route { grid-template-columns: 1fr; gap: 15px; }
+  .roadmap-connector { width: 1px; height: 24px; transform-origin: top; }
+  @media (prefers-reduced-motion: no-preference) {
+    .roadmap-unfold:not([hidden]) .roadmap-connector { animation-name: ati-route-draw-vertical; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-bottom::before { display: none; }
+  .public-page .magnetic-cta { transform: none !important; }
+  .workflow-rail { display: none; }
+  .how-title .heading-mask > span { opacity: 1; transform: none; }
+}
