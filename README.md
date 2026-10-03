@@ -3,6 +3,10 @@
 Frontend React/Vite của Planora: không gian làm việc từ ý tưởng đến hành động.
 Giao diện dùng nền kem, xanh rừng, typography editorial và motion nhẹ.
 
+**Website:** https://planora-ivory-tau.vercel.app
+
+Repo đã liên kết project Vercel `planora`; nhánh `main` dùng cho production.
+
 ## Phạm vi bản này
 
 Repo này chỉ chứa frontend, được tách từ `apps/chat-web` tại commit
